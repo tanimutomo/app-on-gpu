@@ -61,3 +61,11 @@ Response (json)
   "name": "dog",
 }
 ```
+
+
+## Customize application
+
+You can use your flask application by replacing `app/api/` to it.
+
+You don't have to customize other directories.
+You can use same settings as this repo.
