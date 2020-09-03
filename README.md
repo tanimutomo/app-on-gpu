@@ -35,6 +35,8 @@ $ bash ./scripts/run.sh prod
 
 ### Predict
 
+Predict imagenet class for posted image.
+
 `POST /image`
 
 Request
@@ -56,5 +58,6 @@ Response (json)
 ```
 {
   "id": 1,
+  "name": "dog",
 }
 ```
