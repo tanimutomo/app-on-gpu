@@ -135,5 +135,4 @@ ssl/*
 !.gitkeep
 .env
 app/test/images/*
-app/test/images/input.*
-app/test/images/output.*
+!app/test/images/input.*

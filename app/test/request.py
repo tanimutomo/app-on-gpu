@@ -10,7 +10,7 @@ from PIL import Image
 HOST = "http://127.0.0.1:5000"
 INPUT_IMAGE_PATH = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
-    "images/input.png"
+    "images/input.jpg"
 )
 INPUT_TXT_PATH = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
