@@ -50,15 +50,15 @@ Request
 - Body (json)
 ```
 {
-  "image": "${base64 encoded image}"
+  "image": "${base64_encoded_image}"
 }
 ```
 
 Response (json)
 ```
 {
-  "id": 1,
-  "name": "dog",
+  "id": ${class_id},
+  "name": "${class_name}",
 }
 ```
 
