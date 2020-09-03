@@ -127,3 +127,13 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# custom
+.vscode/
+env/
+ssl/*
+!.gitkeep
+.env
+app/test/images/*
+app/test/images/input.*
+app/test/images/output.*

@@ -1,0 +1,7 @@
+version: "2.3"
+
+services:
+  https-portal:
+    environment:
+      STAGE: 'production' # Don't use production until staging works
+      # FORCE_RENEW: 'true'

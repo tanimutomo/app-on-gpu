@@ -1,0 +1,48 @@
+version: "2.3"
+
+services:
+  app:
+    build: ./app
+    container_name: app
+    restart: always
+    runtime: nvidia
+    environment: 
+      - APP_NAME=docodemo
+      - FLASK_APP=run.py
+      - FLASK_ENV=development
+      - NVIDIA_VISIBLE_DEVICES=all
+    expose:
+      - 8080
+    networks:
+      - docodemo
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    restart: always
+    depends_on:
+      - app
+    expose:
+      - 8000
+    networks:
+      - docodemo
+
+  https-portal:
+    image: steveltn/https-portal:1
+    container_name: https
+    restart: always
+    environment:
+      DOMAINS: "${DOCODEMO_BASIC_AUTH_USER}:${DOCODEMO_BASIC_AUTH_PASSWORD}@${DOCODEMO_HOST} -> http://nginx:8000"
+    depends_on:
+      - nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./ssl:/var/lib/https-portal
+    networks:
+      - docodemo
+
+networks:
+  docodemo:
+    external: true
