@@ -7,14 +7,14 @@ services:
     restart: always
     runtime: nvidia
     environment: 
-      - APP_NAME=docodemo
+      - APP_NAME=app
       - FLASK_APP=run.py
       - FLASK_ENV=development
       - NVIDIA_VISIBLE_DEVICES=all
     expose:
       - 8080
     networks:
-      - docodemo
+      - app-on-gpu
 
   nginx:
     build: ./nginx
@@ -25,14 +25,14 @@ services:
     expose:
       - 8000
     networks:
-      - docodemo
+      - app-on-gpu
 
   https-portal:
     image: steveltn/https-portal:1
     container_name: https
     restart: always
     environment:
-      DOMAINS: "${DOCODEMO_BASIC_AUTH_USER}:${DOCODEMO_BASIC_AUTH_PASSWORD}@${DOCODEMO_HOST} -> http://nginx:8000"
+      DOMAINS: "${APP_BASIC_AUTH_USER}:${APP_BASIC_AUTH_PASSWORD}@${APP_HOST} -> http://nginx:8000"
     depends_on:
       - nginx
     ports:
@@ -41,8 +41,8 @@ services:
     volumes:
       - ./ssl:/var/lib/https-portal
     networks:
-      - docodemo
+      - app-on-gpu
 
 networks:
-  docodemo:
+  app-on-gpu:
     external: true

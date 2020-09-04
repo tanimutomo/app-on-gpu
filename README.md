@@ -1,5 +1,5 @@
-# docodemo
-docodemo enables you to create a new CUDA-based web application running on your GPU server easily.
+# app-on-gpu
+app-on-gpu enables you to create a new CUDA-based web application running on your GPU server easily.
 
 This repo is sample application predicting imagenet class which uses 
 - pytorch + flask (nvidia docker)
@@ -17,7 +17,7 @@ $ copy .env.default .env
 
 # set variables in .env
 
-$ docker network create docodemo
+$ docker network create app-on-gpu
 ```
 
 ### Start service (stg)
